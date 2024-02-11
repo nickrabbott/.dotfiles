@@ -6,10 +6,13 @@ This repository is where I keep my bash, Neovim, and tmux configurations, all ne
 - GNU Stow (Install via your package manager or follow the [official instructions](https://www.gnu.org/software/stow/manual/stow.html#Installation))
 
 ## Setup
-Clone the repository into your home directory and use Stow to symlink the configuration files:
+Clone the repository into the home directory and use stow to symlink the configuration files
 
 ```bash
 cd $HOME
 git clone git@github.com:nickrabbott/.dotfiles.git
 cd .dotfiles
 stow bash config tmux
+```
+
+Store anything unique to a machine for bash in ~/.bash_local. It will get loaded by .bashrc
