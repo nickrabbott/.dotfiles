@@ -32,9 +32,9 @@ cnoreabbrev ff Telescope find_files
 " Map :bf to Telescope find_files
 cnoreabbrev bf Telescope current_buffer_fuzzy_find
 " Shortcuts/remap(?) for floaterm. Found it somehwere online.
-noremap  <leader>t  :FloatermToggle<CR>
-noremap! <leader>t  <Esc>:FloatermToggle<CR>
-tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
+" noremap  <leader>t  :FloatermToggle<CR>
+" noremap! <leader>t  <Esc>:FloatermToggle<CR>
+" tnoremap <leader>t  <C-\><C-n>:FloatermToggle<CR>
 set clipboard+=unnamedplus
 
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
