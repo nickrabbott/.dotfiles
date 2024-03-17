@@ -32,3 +32,6 @@ set -o vi
 if [ -f ~/.bash_local ]; then
     source ~/.bash_local
 fi
+
+alias l="ls -al"
+alias ll="ls -al"
