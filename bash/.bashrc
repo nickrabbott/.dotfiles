@@ -15,12 +15,14 @@ git_branch() {
 
 # ANSII Colors
 export blue="\[\033[38;5;45m\]"
-export orange="\[\033[38;5;215m\]"
+export orange="\[\033[38;5;137m\]"
+# export orange="\[\033[33m\]"  # Yellow (standard ANSI color)
+# export orange="\[\033[38;5;215m\]"
 export red="\[\033[38;5;9m\]"
 export reset="\[\033[00m\]"
 # Custom PS1 with light blue for the user@host, color 215 for the directory, and the git branch
 # export PS1="${blue}\u@\h${reset} ${orange}\w${reset}$(git_branch)${reset}\$ "
-export PS1="\[\033[38;5;45m\]\u@\h\[\033[00m\] \[\033[38;5;215m\]\w\[\033[00m\]\$(git_branch) \$ "
+export PS1="\[\033[38;5;45m\]\u@\h\[\033[00m\] \[\033[38;5;180m\]\w\[\033[00m\]\$(git_branch) \$ "
 
 # Simplified PS1 with proper non-printing character handling. Troubleshooting purposes
 # export PS1="\[\033[01;32m\]\u@\h \[\033[01;34m\]\w\[\033[00m\]\$(git_branch) \$ "
