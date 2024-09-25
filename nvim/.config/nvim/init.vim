@@ -88,6 +88,51 @@ cmp.setup({
     { name = 'buffer' },
   })
 })
+
+-- LSP Configuration for Python
+require'lspconfig'.pyright.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+-- Alternatively, use pylsp
+-- require'lspconfig'.pylsp.setup{
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
+
+-- LSP Configuration for Python
+require'lspconfig'.pyright.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+-- Alternatively, use pylsp
+-- require'lspconfig'.pylsp.setup{
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
+
+-- Autocompletion setup
+local cmp = require'cmp'
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-b>'] = cmp.mapping.scroll_docs(-1),
+    ['<C-f>'] = cmp.mapping.scroll_docs(1),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.close(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+  }, {
+    { name = 'buffer' },
+  })
+})
+
 -- Lualine
 
 require('lualine').setup {
