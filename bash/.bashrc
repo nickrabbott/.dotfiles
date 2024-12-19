@@ -37,3 +37,5 @@ fi
 
 alias l="ls -al"
 alias ll="ls -al"
+
+export ADAPTER_IP=$(ip addr show $ADAPTER_NAME | grep -E "inet " | awk '{print $2}' | awk -F '/' '{print $1}')
