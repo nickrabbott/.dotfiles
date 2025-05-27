@@ -2,14 +2,6 @@
 
 set -e
 
-user=$(whoami)
-if [ "$user" = "root" ]; then
-	read -p "Running as root or sudo, are you sure (y/n)? " root_accept
-	if [ "$root_accept" != "y" ]; then
-		exit 1
-	fi
-fi
-
 
 # Linux and mac bootstrap
 OS=$(uname -s)
@@ -19,6 +11,14 @@ directories=("bash" "nvim" "tmux")
 
 if [ "$OS" = "Darwin" ]; then
     echo "MacOS detected"
+
+	user=$(whoami)
+	if [ "$user" = "root" ]; then
+		read -p "For MacOS, you probably shouldn't be running as root or sudo. Are you sure (y/n)? " root_accept
+		if [ "$root_accept" != "y" ]; then
+			exit 1
+		fi
+	fi
 
     brew --version || {
 		echo "Installing homebrew..."
@@ -43,9 +43,22 @@ if [ "$OS" = "Darwin" ]; then
 	done
 
 elif [ "$OS" = "Linux" ]; then
-    # Linux
-    echo "Linux bootstrap is not yet implemented"
-	exit 1
+    echo "Linux detected"
+
+    if ! sudo apt --version &>/dev/null; then
+        echo "This only works for systems with apt"
+        exit 1
+    fi
+
+    for package in "${packages[@]}"; do
+        echo "Installing $package..."
+        if DEBIAN_FRONTEND=noninteractive sudo apt install -y "$package"; then
+            echo "✅ OK"
+        else
+            echo "❌ Failed to install $package"
+            exit 1
+        fi
+    done
 else
     echo "🚫 $OS is not recognized"
 	exit 1
