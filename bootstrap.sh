@@ -51,6 +51,11 @@ elif [ "$OS" = "Linux" ]; then
     fi
 
     for package in "${packages[@]}"; do
+		if [ $package = "nvim" ]; then
+			echo "Skipping nvim"
+			continue
+		fi
+
         echo "Installing $package..."
         if DEBIAN_FRONTEND=noninteractive sudo apt install -y "$package"; then
             echo "✅ OK"
